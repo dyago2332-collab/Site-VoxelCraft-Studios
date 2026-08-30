@@ -1,18 +1,13 @@
 import os
-from flask import Flask, send_from_directory
+from flask import Flask
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    # Abre o seu arquivo index.html na página inicial
-    return send_from_directory('.', 'index.html')
-
-@app.route('/<path:path>')
-def send_static(path):
-    # Carrega as imagens, estilos e scripts das suas pastas
-    return send_from_directory('.', path)
+    return "<h1>Meu site Python está no ar pelo Google!</h1>"
 
 if __name__ == "__main__":
+    # O Google Cloud define a porta automaticamente através da variável PORT
     port = int(os.environ.get("PORT", 8080))
     app.run(host="0.0.0.0", port=port)
